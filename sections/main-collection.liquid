@@ -1,0 +1,54 @@
+<style>
+    .section-main-collection {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .collections-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        list-style-type: none;
+        padding: 0;
+    }
+    .collections-list li {
+        flex: 1 1 calc(33.333% - 16px);
+        box-sizing: border-box;
+    }
+    .collections-list li img{
+        border-radius: 8px;
+    }
+</style>
+
+<div class="section-main-collection">
+    <h5>Collection card</h5>        
+    <ul class="collections-list">
+        {% for collection in collections  %}
+        <li>
+            <div class="card">
+                <div
+                class="media"
+                style="--width: {{ collection.image.width | default: 100 }}; --height: {{ collection.image.width | default: 100 }};"
+                >
+                <img src="{{collection.image | img_url: 'master'}}" alt="{{ collection.title }}" />
+                </div>
+                <h2>
+                <a href="{{ collection.url }}">{{ collection.title }}</a>
+                </h2>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% schema %}
+{
+  "name": "Main Collection",
+  "class": "section-main-collection",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Main Collection"
+    }
+  ]
+}
+{% endschema %}

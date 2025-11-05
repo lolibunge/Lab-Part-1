@@ -59,7 +59,7 @@
           {%- when '@app' -%}
             {% render block %}
           {%- when 'text' -%}
-            <p {{ block.shopify_attributes }}>
+            <p class="uppercase" {{ block.shopify_attributes }}>
               {{ block.settings.text }}
             </p>
           {%- when 'title' -%}
@@ -269,6 +269,18 @@
                 </ul>
               {%- endif -%}
             </product-recommendations>
+            {%- when 'model_info' -%}
+            <div {{ block.shopify_attributes }}>
+              <p>{{ product.metafields.models.model_info.value.name.value }} is {{ product.metafields.models.model_info.value.height | metafield_tag }}
+                and wearing size {{ product.metafields.model.wearing_size.value }}.
+              </p>
+              <p>{{ product.metafields.models.model_info.value.name.value }}'s measurements: </p>
+              <ul>
+                <li>Bust: {{ product.metafields.models.model_info.value.bust | metafield_tag }}</li>
+                <li>Waist: {{ product.metafields.models.model_info.value.waist | metafield_tag }}</li>
+                <li>Hips: {{ product.metafields.models.model_info.value.hips | metafield_tag }}</li>
+              </ul>
+            </div>
         {%- endcase -%}
       {%- endfor -%}
     </div>
@@ -378,6 +390,11 @@
       "type": "variant_picker",
       "name": "t:sections.main-product.blocks.variant_picker.name",
       "limit": 1
+    },
+    {
+      "type": "model_info",
+      "name": "t:sections.main-product.blocks.model_info.name",
+      "limit": 1,
     },
     {
       "type": "buy_buttons",

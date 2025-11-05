@@ -101,6 +101,9 @@
         "variant_picker": {
           "name": "Variant picker"
         },
+        "model_info": {
+          "name": "Model info"
+        },
         "buy_buttons": {
           "name": "Buy buttons",
           "settings": {

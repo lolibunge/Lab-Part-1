@@ -193,6 +193,10 @@ h6, .h6 {
   font-size: 1rem;
 }
 
+.uppercase {
+    text-transform:uppercase;
+}
+
 @media only screen and (min-width: 750px) {
   .h0 {
     font-size: 5.2rem;
